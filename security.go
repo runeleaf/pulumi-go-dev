@@ -17,23 +17,23 @@ func createSg(ctx *pulumi.Context, opt *Opt) (*Sg, error) {
 		Ingress: ec2.SecurityGroupIngressArray{
 			ec2.SecurityGroupIngressArgs{
 				CidrBlocks: pulumi.StringArray{pulumi.String("0.0.0.0/0")},
-				FromPort: pulumi.Int(22),
-				ToPort: pulumi.Int(22),
-				Protocol: pulumi.String("TCP"),
+				FromPort:   pulumi.Int(22),
+				ToPort:     pulumi.Int(22),
+				Protocol:   pulumi.String("TCP"),
 			},
 			ec2.SecurityGroupIngressArgs{
 				CidrBlocks: pulumi.StringArray{pulumi.String("0.0.0.0/0")},
-				FromPort: pulumi.Int(80),
-				ToPort: pulumi.Int(80),
-				Protocol: pulumi.String("TCP"),
+				FromPort:   pulumi.Int(80),
+				ToPort:     pulumi.Int(80),
+				Protocol:   pulumi.String("TCP"),
 			},
 		},
 		Egress: ec2.SecurityGroupEgressArray{
 			ec2.SecurityGroupEgressArgs{
 				CidrBlocks: pulumi.StringArray{pulumi.String("0.0.0.0/0")},
-				FromPort: pulumi.Int(0),
-				ToPort: pulumi.Int(0),
-				Protocol: pulumi.String("-1"),
+				FromPort:   pulumi.Int(0),
+				ToPort:     pulumi.Int(0),
+				Protocol:   pulumi.String("-1"),
 			},
 		},
 		Tags: pulumi.StringMap{
@@ -50,17 +50,17 @@ func createSg(ctx *pulumi.Context, opt *Opt) (*Sg, error) {
 		Ingress: ec2.SecurityGroupIngressArray{
 			ec2.SecurityGroupIngressArgs{
 				CidrBlocks: pulumi.StringArray{pulumi.String("0.0.0.0/0")},
-				FromPort: pulumi.Int(80),
-				ToPort: pulumi.Int(80),
-				Protocol: pulumi.String("TCP"),
+				FromPort:   pulumi.Int(80),
+				ToPort:     pulumi.Int(80),
+				Protocol:   pulumi.String("TCP"),
 			},
 		},
 		Egress: ec2.SecurityGroupEgressArray{
 			ec2.SecurityGroupEgressArgs{
 				CidrBlocks: pulumi.StringArray{pulumi.String("0.0.0.0/0")},
-				FromPort: pulumi.Int(0),
-				ToPort: pulumi.Int(0),
-				Protocol: pulumi.String("-1"),
+				FromPort:   pulumi.Int(0),
+				ToPort:     pulumi.Int(0),
+				Protocol:   pulumi.String("-1"),
 			},
 		},
 		Tags: pulumi.StringMap{

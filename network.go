@@ -6,10 +6,10 @@ import (
 )
 
 type Opt struct {
-	vpc interface{}
-	subnet interface{}
+	vpc     interface{}
+	subnet  interface{}
 	subnet2 interface{}
-	err interface{}
+	err     interface{}
 }
 
 func createVpc(ctx *pulumi.Context) (*Opt, error) {
@@ -38,10 +38,10 @@ func createVpc(ctx *pulumi.Context) (*Opt, error) {
 		Tags: pulumi.StringMap{
 			"Name": pulumi.String("app-dev-rt1"),
 		},
-		Routes: ec2.RouteTableRouteArray {
+		Routes: ec2.RouteTableRouteArray{
 			&ec2.RouteTableRouteArgs{
-					CidrBlock: pulumi.String("0.0.0.0/0"),
-					GatewayId: gateway.ID(),
+				CidrBlock: pulumi.String("0.0.0.0/0"),
+				GatewayId: gateway.ID(),
 			},
 		},
 	})
@@ -50,8 +50,8 @@ func createVpc(ctx *pulumi.Context) (*Opt, error) {
 	}
 
 	subnet, err := ec2.NewSubnet(ctx, "app-dev-subnet1", &ec2.SubnetArgs{
-		VpcId: vpc.ID(),
-		CidrBlock: pulumi.String("10.0.2.0/24"),
+		VpcId:            vpc.ID(),
+		CidrBlock:        pulumi.String("10.0.2.0/24"),
 		AvailabilityZone: pulumi.String("ap-northeast-1b"),
 		Tags: pulumi.StringMap{
 			"Name": pulumi.String("app-dev-subnet1"),
@@ -62,8 +62,8 @@ func createVpc(ctx *pulumi.Context) (*Opt, error) {
 	}
 
 	subnet2, err := ec2.NewSubnet(ctx, "app-dev-subnet2", &ec2.SubnetArgs{
-		VpcId: vpc.ID(),
-		CidrBlock: pulumi.String("10.0.3.0/24"),
+		VpcId:            vpc.ID(),
+		CidrBlock:        pulumi.String("10.0.3.0/24"),
 		AvailabilityZone: pulumi.String("ap-northeast-1c"),
 		Tags: pulumi.StringMap{
 			"Name": pulumi.String("app-dev-subnet2"),

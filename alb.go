@@ -21,9 +21,9 @@ func createAlb(ctx *pulumi.Context, opt *Opt, sg *Sg) error {
 
 	// tg
 	tg, err := lb.NewTargetGroup(ctx, "app-dev-tg", &lb.TargetGroupArgs{
-		Port: pulumi.Int(80),
+		Port:     pulumi.Int(80),
 		Protocol: pulumi.String("HTTP"),
-		VpcId: opt.vpc.(*ec2.Vpc).ID(),
+		VpcId:    opt.vpc.(*ec2.Vpc).ID(),
 	})
 	if err != nil {
 		return err
@@ -32,13 +32,13 @@ func createAlb(ctx *pulumi.Context, opt *Opt, sg *Sg) error {
 	// listener
 	_, err = lb.NewListener(ctx, "app-dev-listener", &lb.ListenerArgs{
 		LoadBalancerArn: alb.Arn,
-		Port: pulumi.Int(80),
-		Protocol: pulumi.String("HTTP"),
+		Port:            pulumi.Int(80),
+		Protocol:        pulumi.String("HTTP"),
 		DefaultActions: lb.ListenerDefaultActionArray{
-				&lb.ListenerDefaultActionArgs{
-						Type: pulumi.String("forward"),
-						TargetGroupArn: tg.Arn,
-				},
+			&lb.ListenerDefaultActionArgs{
+				Type:           pulumi.String("forward"),
+				TargetGroupArn: tg.Arn,
+			},
 		},
 	})
 	if err != nil {
